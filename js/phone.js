@@ -20,6 +20,7 @@ const displayPhone = (phone, isShowAll) => {
     else {
         showAll.classList.add('hidden')
     }
+    noAvailable(phone.length)
     // console.log('showAll', isShowAll)
     // display first 10
     if (!isShowAll) {
@@ -49,9 +50,20 @@ const displayPhone = (phone, isShowAll) => {
     toggle(false)
 }
 
+const noAvailable = (data) => {
+    const DataAvailable = document.getElementById('no-available')
+    if (data == 0) {
+        DataAvailable.classList.remove('hidden')
+    }
+    else {
+        DataAvailable.classList.add('hidden')
+    }
+}
+
+
 // 
 const handleSearchDetails = async (id) => {
-    console.log('handleSearchDetails', id)
+    // console.log('handleSearchDetails', id)
     // load single phone data
     const res = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`)
     const data = await res.json();
